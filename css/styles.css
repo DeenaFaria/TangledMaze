@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.maze {
+    display: grid;
+    grid-template-columns: repeat(8, 60px); /* Updated for 8x8 grid */
+    grid-gap: 5px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border: 2px solid #000; /* Distinct border for visibility */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell.empty {
+    background-color: #f0f0f0;
+}
+
+.cell.rapunzel {
+    background-color: #ffeb3b;
+}
+
+.cell.gothel {
+    background-color: #d32f2f;
+}
+
+.cell.stabbington {
+    background-color: #7b1fa2;
+}
+
+.cell.eugene {
+    background-color: #388e3c;
+}
+
+.cell.lights {
+    background-color: #03a9f4;
+}
+
+.cell.rapunzel-eugene {
+    background-color: #ffeb3b; /* Same as Rapunzel's color */
+}
+
+img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%; /* Adjust to fit both images within the cell */
+    max-height: 100%; /* Adjust to fit both images within the cell */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+}

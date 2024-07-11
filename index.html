@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="tangledMazeApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Tangled Maze</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body ng-controller="GameController">
+    <h1>Tangled Maze</h1>
+    <div class="maze">
+        <div class="cell" ng-repeat="cell in maze" ng-class="cell.type" ng-click="move($index)">
+            <img ng-repeat="image in cell.images" ng-src="images/{{image}}" ng-if="image">
+        </div>
+    </div>
+    <p>{{message}}</p>
+    <button ng-click="resetGame()">Reset Game</button>
+    <button ng-click="healEugene()">Heal Eugene</button>
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+</html>
