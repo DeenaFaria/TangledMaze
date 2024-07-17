@@ -1,0 +1,21 @@
+1. resetGame(): Resets the game state, initializes variables, and sets up the maze grid with characters, including Rapunzel, Gothel, Stabbington Brothers, guards, Eugene, and lights.
+
+2. placeTower(): Places Rapunzel's tower at a random position on the maze grid.
+
+3. placeCharacters(): Randomly places characters (Gothel, Stabbington Brothers, guards, Eugene, and lights) on the maze grid.
+
+4. placeWalls(): Places walls on the maze grid to create obstacles for Rapunzel.
+
+5. getRandomPositions(count): Generates a list of random, unique positions on the maze grid. Used for placing characters and walls.
+
+6. handleCellInteraction(index): Handles the interaction when Rapunzel moves to a new cell. Checks the type of cell (empty, character, light, wall) and updates game state accordingly (e.g., captures Rapunzel, finds lights, encounters characters).
+
+7. moveRapunzel(index): Moves Rapunzel to a new cell on the maze grid based on user input (click). Checks movement validity and calls handleCellInteraction().
+
+8. moveToRandomPosition(): Moves Rapunzel to a random position on the maze grid when captured by Stabbington Brothers or guards.
+
+9. checkAllLightsVisited(): Checks if all lights have been visited by Rapunzel. Determines game completion condition.
+
+10. startCharacterMovement(): Starts periodic movement of characters (Gothel, Stabbington Brothers, guards) on the maze grid.
+
+11. startGothelEnergyDepletion(): Starts periodic depletion of Gothel's energy over time.
