@@ -14,12 +14,12 @@ app.controller('GameController', function($scope, $interval) {
     var eugeneFound = false;
 	var eugeneAlive=true;
     var healingIncantations = 2;
-    var lightCount = 5; // Number of light locations
+    var lightCount = 7; // Number of light locations
     var intervalPromises = [];
     var rapunzelChances = 3;
     var score = 0;
 	$scope.healingIncantations = 2;
-	$scope.rapunzelChances = 5;
+	$scope.rapunzelChances = 3;
     $scope.score = 0;
 	var gameOver=false;
 	var gothelFound=false;
@@ -45,7 +45,7 @@ $scope.resetGame = function() {
     rapunzelSteps = 1;
     eugeneFound = false;
     $scope.healingIncantations = 2;
-    $scope.rapunzelChances = 5;
+    $scope.rapunzelChances = 3;
     $scope.score = 0;
     $scope.message = "Help Rapunzel find the lights!";
     placeCharacters();
@@ -76,11 +76,13 @@ $scope.startOver = function() {
 	guardsFound=false;
     //healingIncantations = 2;
     //$scope.rapunzelChances = 5;
-    //$scope.score = 0;
+    $scope.score -=20 ;
     //$scope.message = "Help Rapunzel find the lights!";
     placeCharacters();
     startCharacterMovement();
 };
+
+
 
 // Call the resetGame function to initialize the game on load
 $scope.resetGame();
@@ -185,6 +187,7 @@ $scope.resetGame();
                else{
 				   $scope.message = "Thanks for helping Rapunzel!";
 				   stopCharacterMovement();
+				   $scope.message = "Your score:"+$scope.score;
 				   
 				   return;
 			   }
@@ -247,18 +250,24 @@ $scope.resetGame();
             if (eugeneFound) {
                 $scope.message = "At last I see the light!";
 				$scope.score+=50;
-				$scope.stopCharacterMovement(); 
-				success=1;
+				
+				
 				
             } else {
                 $scope.message = "At last I see the light!";
-				$scope.stopCharacterMovement(); 
-				success=1;
+				
+				
             }
            // Stop character movement
+		   success=1;
+		   stopCharacterMovement();
+		   $scope.message = "At last I see the light! Score:"+$scope.score;
+		   return;
+		   
         } else {
-            $scope.message = "Rapunzel sees one of the lights!";
+            $scope.message = "Rapunzel found one lantern!";
         }
+		
         moveRapunzel(index, false);
     } else if ($scope.maze[index].type === 'wall') {
         $scope.message = "Ouch! Rapunzel hit a wall! Try another path.";
@@ -321,6 +330,7 @@ function moveGothelTowardRapunzel() {
 
             // Check if Gothel has entered Rapunzel's cell
             if (newIndex === rapunzelIndex) {
+				$scope.rapunzelChances--;
                 $scope.startOver();
             }
         }
@@ -335,15 +345,15 @@ function startCharacterMovement() {
     intervalPromises.push($interval(function() {
         console.log("Moving Gothel...");
         moveGothelTowardRapunzel();
-    }, 2000));
+    }, 1000));
 
     intervalPromises.push($interval(function() {
         moveCharacter('stabbington');
-    }, 3000));
+    }, 1200));
 
     intervalPromises.push($interval(function() {
         moveCharacter('guard');
-    }, 5000));
+    }, 1800));
 }
 
 

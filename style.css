@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -71,4 +73,37 @@ img {
 button {
     padding: 10px 20px;
     font-size: 1em;
+}
+
+/* Additional styles for better mobile experience */
+.maze-container {
+    max-width: 100%; /* Ensure it doesn't overflow on mobile */
+    margin: 0 auto;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.content {
+    padding: 20px;
+    margin-bottom: 50px; /* Space for the fixed footer */
+}
+
+@media (max-width: 600px) {
+    .maze {
+        grid-template-columns: repeat(8, 40px); /* Smaller cells for mobile */
+        grid-gap: 2px;
+    }
+
+    .cell {
+        width: 40px;
+        height: 40px;
+    }
 }

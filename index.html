@@ -2,21 +2,31 @@
 <html ng-app="tangledMazeApp">
 <head>
     <meta charset="UTF-8">
-    <title>Tangled Maze</title>
+    <title>Tangled Maze Beta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-controller="GameController">
-    <h1>Tangled Maze</h1>
-    <div class="maze">
-        <div class="cell" ng-repeat="cell in maze" ng-class="cell.type" ng-click="move($index)">
-            <img ng-repeat="image in cell.images" ng-src="images/{{image}}" ng-if="image">
+    <div class="content">
+        <h1>Tangled Maze</h1>
+        <p>Chances Left: {{rapunzelChances}}</p>
+        <p>Healing Incantations Left: {{healingIncantations}}</p>
+        <p>Score: {{score}}</p>
+        <div class="maze-container">
+            <div class="maze">
+                <div class="cell" ng-repeat="cell in maze" ng-class="cell.type" ng-click="move($index)">
+                    <img ng-src="images/{{image}}" ng-repeat="image in cell.images">
+                </div>
+            </div>
         </div>
+        <p>{{message}}</p>
+        <button ng-click="resetGame()">Reset Game</button>
     </div>
-    <p>{{message}}</p>
-    <button ng-click="resetGame()">Reset Game</button>
-    <button ng-click="healEugene()">Heal Eugene</button>
-    <script src="js/app.js"></script>
-    <script src="js/controller.js"></script>
+    <div class="footer">
+        <p>&copy; 2024 Deena Faria. All rights reserved.</p>
+    </div>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
 </body>
 </html>
